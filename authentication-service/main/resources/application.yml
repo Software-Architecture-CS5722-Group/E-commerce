@@ -1,0 +1,23 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: AUTHENTICATION-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:8889/oauthdatabase?createDatabaseIfNotExist=true
+    username: root
+    password: passme@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+logging:
+  file:
+    path: ~/Documents/Microservices/GroupProject/logs/microservice.log
