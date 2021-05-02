@@ -1,0 +1,11 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Software-Architecture-CS5722-Group/configuration
+          clone-on-start: true
