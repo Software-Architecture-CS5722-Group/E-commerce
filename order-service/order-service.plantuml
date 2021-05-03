@@ -1,0 +1,263 @@
+@startuml
+
+title __ORDER-SERVICE's Class Diagram__\n
+
+  namespace  {
+    class MavenWrapperDownloader {
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      class com.groupjn.orderservice.OrderServiceApplication {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace builder {
+        class com.groupjn.orderservice.builder.Email {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace builder {
+        class com.groupjn.orderservice.builder.EmailBuilder {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace builder {
+        interface com.groupjn.orderservice.builder.IEmail {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace common {
+        class com.groupjn.orderservice.common.Payment {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace common {
+        class com.groupjn.orderservice.common.TransactionRequest {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace common {
+        class com.groupjn.orderservice.common.TransactionResponse {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace configuration {
+        class com.groupjn.orderservice.configuration.WebConfiguration {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace controller {
+        class com.groupjn.orderservice.controller.OrderController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace entity {
+        class com.groupjn.orderservice.entity.Order {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace interceptor {
+        class com.groupjn.orderservice.interceptor.GeneralPurposeInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace interceptor {
+        class com.groupjn.orderservice.interceptor.LoggerInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace interceptor {
+        class com.groupjn.orderservice.interceptor.SinglePurposeInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        abstract class com.groupjn.orderservice.mediator.Component {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        class com.groupjn.orderservice.mediator.ComponentA {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        class com.groupjn.orderservice.mediator.ComponentB {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        class com.groupjn.orderservice.mediator.ConcreteMediator {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        interface com.groupjn.orderservice.mediator.Mediator {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace mediator {
+        class com.groupjn.orderservice.mediator.MediatorTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace repository {
+        interface com.groupjn.orderservice.repository.OrderRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace service {
+        class com.groupjn.orderservice.service.OrderService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace template {
+        abstract class com.groupjn.orderservice.template.NotificationMessage {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.groupjn.orderservice {
+      namespace template {
+        class com.groupjn.orderservice.template.UserNotificatonMessage {
+        }
+      }
+    }
+  }
+  
+
+  com.groupjn.orderservice.builder.Email .up.|> com.groupjn.orderservice.builder.IEmail
+  com.groupjn.orderservice.common.TransactionRequest o-- com.groupjn.orderservice.entity.Order : order
+  com.groupjn.orderservice.common.TransactionRequest o-- com.groupjn.orderservice.common.Payment : payment
+  com.groupjn.orderservice.common.TransactionResponse o-- com.groupjn.orderservice.entity.Order : order
+  com.groupjn.orderservice.configuration.WebConfiguration .up.|> org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+  com.groupjn.orderservice.controller.OrderController o-- com.groupjn.orderservice.service.OrderService : orderService
+  com.groupjn.orderservice.interceptor.GeneralPurposeInterceptor .up.|> org.springframework.web.servlet.HandlerInterceptor
+  com.groupjn.orderservice.interceptor.LoggerInterceptor -up-|> org.hibernate.EmptyInterceptor
+  com.groupjn.orderservice.interceptor.SinglePurposeInterceptor .up.|> org.springframework.web.servlet.HandlerInterceptor
+  com.groupjn.orderservice.mediator.Component o-- com.groupjn.orderservice.mediator.Mediator : mediator
+  com.groupjn.orderservice.mediator.ComponentA -up-|> com.groupjn.orderservice.mediator.Component
+  com.groupjn.orderservice.mediator.ComponentB -up-|> com.groupjn.orderservice.mediator.Component
+  com.groupjn.orderservice.mediator.ConcreteMediator .up.|> com.groupjn.orderservice.mediator.Mediator
+  com.groupjn.orderservice.service.OrderService o-- com.groupjn.orderservice.repository.OrderRepository : orderRepository
+  com.groupjn.orderservice.template.UserNotificatonMessage -up-|> com.groupjn.orderservice.template.NotificationMessage
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
