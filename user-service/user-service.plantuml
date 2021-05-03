@@ -1,0 +1,163 @@
+@startuml
+
+title __USER-SERVICE's Class Diagram__\n
+
+  namespace com.softwarearchitecture.user.service {
+    class com.softwarearchitecture.user.service.ServletInitializer {
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    class com.softwarearchitecture.user.service.UserServiceApplication {
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace controller {
+      class com.softwarearchitecture.user.service.controller.UserController {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace entity {
+      class com.softwarearchitecture.user.service.entity.Permission {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace entity {
+      class com.softwarearchitecture.user.service.entity.Role {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace entity {
+      class com.softwarearchitecture.user.service.entity.User {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace factory {
+      class com.softwarearchitecture.user.service.factory.AdminUser {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace factory {
+      class com.softwarearchitecture.user.service.factory.ClientUser {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace factory {
+      class com.softwarearchitecture.user.service.factory.CreateUserFactory {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace factory {
+      interface com.softwarearchitecture.user.service.factory.ICreateUserFactory {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace factory {
+      enum UserType {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace repository {
+      interface com.softwarearchitecture.user.service.repository.RoleRepository {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace repository {
+      interface com.softwarearchitecture.user.service.repository.UserRepository {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace service {
+      interface com.softwarearchitecture.user.service.service.IRoleService {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace service {
+      interface com.softwarearchitecture.user.service.service.IUser {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace service {
+      class com.softwarearchitecture.user.service.service.RoleServiceImpl {
+      }
+    }
+  }
+  
+
+  namespace com.softwarearchitecture.user.service {
+    namespace service {
+      class com.softwarearchitecture.user.service.service.UserServiceImpl {
+      }
+    }
+  }
+  
+
+  com.softwarearchitecture.user.service.ServletInitializer -up-|> org.springframework.boot.web.servlet.support.SpringBootServletInitializer
+  com.softwarearchitecture.user.service.controller.UserController o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
+  com.softwarearchitecture.user.service.controller.UserController o-- com.softwarearchitecture.user.service.service.RoleServiceImpl : roleService
+  com.softwarearchitecture.user.service.entity.Permission .up.|> java.io.Serializable
+  com.softwarearchitecture.user.service.entity.Role .up.|> java.io.Serializable
+  com.softwarearchitecture.user.service.entity.User o-- com.softwarearchitecture.user.service.factory.UserType : userType
+  com.softwarearchitecture.user.service.factory.AdminUser .up.|> com.softwarearchitecture.user.service.factory.ICreateUserFactory
+  com.softwarearchitecture.user.service.factory.ClientUser .up.|> com.softwarearchitecture.user.service.factory.ICreateUserFactory
+  com.softwarearchitecture.user.service.factory.ClientUser o-- com.softwarearchitecture.user.service.repository.RoleRepository : roleRepository
+  com.softwarearchitecture.user.service.factory.ClientUser o-- com.softwarearchitecture.user.service.repository.UserRepository : userRepository
+  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
+  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.service.RoleServiceImpl : roleService
+  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.entity.User : user
+  com.softwarearchitecture.user.service.service.RoleServiceImpl .up.|> com.softwarearchitecture.user.service.service.IRoleService
+  com.softwarearchitecture.user.service.service.RoleServiceImpl o-- com.softwarearchitecture.user.service.repository.RoleRepository : repository
+  com.softwarearchitecture.user.service.service.UserServiceImpl .up.|> com.softwarearchitecture.user.service.service.IUser
+  com.softwarearchitecture.user.service.service.UserServiceImpl o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

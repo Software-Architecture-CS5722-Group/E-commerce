@@ -1,0 +1,20 @@
+server:
+  port: 9192
+spring:
+  h2:
+    console:
+      enabled: true
+  application:
+    name: ORDER-SERVICE
+
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8989/oauth/check_token
+    client:
+      client-id: mobile
+      client-secret: pin
+
+bearer-token: 292b8e65-61ec-452c-9e81-c8c4648b3c06
+Gate-way-url: http://API-GATEWAY-SERVICE/
