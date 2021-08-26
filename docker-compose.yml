@@ -1,150 +1,182 @@
-version: '3.3'
+version: "3.2"
+
+volumes:
+  prometheus_data: {}
+
 services:
-
-# @Todo Add ELK Stack Docker image
-# @Todo add Kafaka docker image
-# @Todo add Jenkins image
-# @Todo add Hystric Dashboard service
-
-  docker-mysql:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'db'
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
-      # You can use whatever password you like
-      MYSQL_PASSWORD: 'password'
-      # Password for root access
-      MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      # <Port exposed> : < MySQL Port running inside container>
-      - '3306:3306'
-    expose:
-      # Opens port 3306 on the container
-      - '3306'
-      # Where our data will be persisted
-    volumes:
-      - my-db:/var/lib/mysql
-    networks:
-      - microservice-network
 
   #back-end Spring Boot Application for Axon service
   axonserver:
     image: axoniq/axonserver
     hostname: axonserver
-    environment:
-      - AXONSERVER_HOSTNAME=axonserver
     ports:
-      - 8024:8024
+      - "8024:8024"
     networks:
       - microservice-network
 
-  #back-end Spring Boot Application for Axon service
-  authentication-service:
-    build: ./authentication-service
-    container_name: authentication-service
+
+  #back-end Spring Boot Application for service registry
+  service-registry:
+    image: service-registry
     environment:
-      - AXONSERVER_HOSTNAME=axonserver
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
     ports:
-      - 8024:8024
-    depends_on:
-      - docker-mysql
-      - service-registry
-      - authentication-service
+      - "8761:8761"
     networks:
       - microservice-network
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
 
-  #back-end Spring Boot Application for order service
+  #back-end Spring Boot Application for api gateway service
   api-gateway:
     #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./api-gateway
-    container_name: api-gateway
+    image: api-gateway
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
     ports:
-      - 9192:9192 # Forward the exposed port 8080 to the container to port 8080 on the host machine
-    depends_on:
-      - service-registry
-      - docker-mysql
+      - "9190:9190" # Forward the exposed port 8080 to the container to port 8080 on the host machine
     networks:
       - microservice-network
-    restart: "on-failure"
+    depends_on:
+      - service-registry
+      - authentication-service
+      - order-service
+      - payment-service
+      - cart-service
+      - user-service
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
+
+  #back-end Spring Boot Application for authentication service
+  authentication-service:
+    image: authentication-service
+    ports:
+      - "9191:9191"
+    networks:
+      - microservice-network
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
 
   #back-end Spring Boot Application for order service
   order-service:
     #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./order-service
-    container_name: order-service
+    image: order-service
     ports:
-      - 9192:9192 # Forward the exposed port 8080 to the container to port 8080 on the host machine
-    depends_on:
-      - service-registry
-      - authentication-service
+      - "9192:9192" # Forward the exposed port 8080 to the container to port 8080 on the host machine
     networks:
       - microservice-network
-    restart: "on-failure"
-
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
 
   #back-end Spring Boot Application for payment service
   payment-service:
     #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./payment-service
-    container_name: payment-service
+    image: payment-service
     ports:
-      - 9191:9191 # Forward the exposed port 8080 to the container to port 8080 on the host machine
-    depends_on:
-      - service-registry
-      - authentication-service
+      - "9193:9193" # Forward the exposed port 8080 to the container to port 8080 on the host machin
     networks:
       - microservice-network
-    restart: "on-failure"
-
-  #back-end Spring Boot Application for product service
-  product-service:
-    #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./product-service
-    container_name: product-service
     environment:
-      - AXONSERVER_HOST=axonserver
-    ports:
-      - 9194:9194 # Forward the exposed port 8080 to the container to port 8080 on the host machine
-    depends_on:
-      - service-registry
-      - authentication-service
-      - axonserver
-    links:
-      - axonserver
-    networks:
-      - microservice-network
-    restart: "on-failure"
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
 
   #back-end Spring Boot Application for cart service
   cart-service:
     #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./cart-service
-    container_name: cart-service
+    image: cart-service
     ports:
-      - 9193:9193 # Forward the exposed port 8080 to the container to port 8080 on the host machine
+      - "9194:9194" # Forward the exposed port 8080 to the container to port 8080 on the host machine
     networks:
       - microservice-network
-    depends_on:
-      - service-registry
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
 
+  #back-end Spring Boot Application for cart service
   user-service:
     #the docker file in scrum-app build the jar and provides the docker image with the following name.
-    build: ./user-service
-    container_name: user-service
+    image: user-service
     ports:
-      - 9193:9193 # Forward the exposed port 8080 to the container to port 8080 on the host machine
+      - "9196:9196" # Forward the exposed port 8080 to the container to port 8080 on the host machine
     networks:
       - microservice-network
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+        -DZIPKIN_SERVER=http://zipkin:9411/
+    volumes:
+      - type: bind
+        source: /Users/user/Desktop/kieker/
+        target: /home
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./config/:/etc/prometheus
+      - ./data/prometheus:/data
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=31d'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
     depends_on:
       - service-registry
+    networks:
+      - microservice-network
 
-# Names our volume
-volumes:
-  my-db:
+  zipkin:
+    image: openzipkin/zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - "9411:9411"
+    depends_on:
+      - service-registry
+    networks:
+      - microservice-network
 
-# Services Network
+  grafan:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - microservice-network
+
 networks:
   microservice-network:
 

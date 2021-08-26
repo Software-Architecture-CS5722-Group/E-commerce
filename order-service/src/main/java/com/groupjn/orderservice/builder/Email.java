@@ -15,6 +15,6 @@ public class Email implements IEmail{
 
     @Override
     public void send() {
-
+        System.out.println("Email Sent");
     }
 }

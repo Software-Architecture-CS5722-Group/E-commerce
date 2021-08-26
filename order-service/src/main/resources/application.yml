@@ -1,20 +1,36 @@
 server:
-  port: 9192
+  port: ${port:9194}
 spring:
   h2:
     console:
       enabled: true
   application:
     name: ORDER-SERVICE
+  zipkin:
+    enabled: true
+    base-url: ${ZIPKIN_SERVER:http://localhost:9411/}
+  sleuth:
+    enable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
 
-security:
-  oauth2:
-    resource:
-      token-info-uri: http://localhost:8989/oauth/check_token
-    client:
-      client-id: mobile
-      client-secret: pin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+
+
 
 bearer-token: 292b8e65-61ec-452c-9e81-c8c4648b3c06
-Gate-way-url: http://API-GATEWAY-SERVICE/
+Gate-way-url: http://api-gateway:9190/
+
+
+

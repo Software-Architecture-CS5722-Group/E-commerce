@@ -1,4 +1,4 @@
-package com.softwarearchitecture.configuration.server;
+package com.groupjn.configurationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

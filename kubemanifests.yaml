@@ -1,0 +1,828 @@
+apiVersion: v1
+items:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: api-gateway
+      name: api-gateway
+    spec:
+      ports:
+        - name: "9190"
+          port: 9190
+          targetPort: 9190
+      selector:
+        io.kompose.service: api-gateway
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: authentication-service
+      name: authentication-service
+    spec:
+      ports:
+        - name: "9191"
+          port: 9191
+          targetPort: 9191
+      selector:
+        io.kompose.service: authentication-service
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: axonserver
+      name: axonserver
+    spec:
+      ports:
+        - name: "8024"
+          port: 8024
+          targetPort: 8024
+      selector:
+        io.kompose.service: axonserver
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cart-service
+      name: cart-service
+    spec:
+      ports:
+        - name: "9194"
+          port: 9194
+          targetPort: 9194
+      selector:
+        io.kompose.service: cart-service
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: grafan
+      name: grafan
+    spec:
+      ports:
+        - name: "3000"
+          port: 3000
+          targetPort: 3000
+      selector:
+        io.kompose.service: grafan
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: order-service
+      name: order-service
+    spec:
+      ports:
+        - name: "9192"
+          port: 9192
+          targetPort: 9192
+      selector:
+        io.kompose.service: order-service
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: payment-service
+      name: payment-service
+    spec:
+      ports:
+        - name: "9193"
+          port: 9193
+          targetPort: 9193
+      selector:
+        io.kompose.service: payment-service
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: prometheus
+      name: prometheus
+    spec:
+      ports:
+        - name: "9090"
+          port: 9090
+          targetPort: 9090
+      selector:
+        io.kompose.service: prometheus
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: service-registry
+      name: service-registry
+    spec:
+      ports:
+        - name: "8761"
+          port: 8761
+          targetPort: 8761
+      selector:
+        io.kompose.service: service-registry
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: user-service
+      name: user-service
+    spec:
+      ports:
+        - name: "9196"
+          port: 9196
+          targetPort: 9196
+      selector:
+        io.kompose.service: user-service
+    status:
+      loadBalancer: {}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: zipkin
+      name: zipkin
+    spec:
+      ports:
+        - name: "9411"
+          port: 9411
+          targetPort: 9411
+      selector:
+        io.kompose.service: zipkin
+    status:
+      loadBalancer: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: api-gateway
+      name: api-gateway
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: api-gateway
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: api-gateway
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: api-gateway
+              name: api-gateway
+              ports:
+                - containerPort: 9190
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: api-gateway-claim0
+          restartPolicy: Always
+          volumes:
+            - name: api-gateway-claim0
+              persistentVolumeClaim:
+                claimName: api-gateway-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: api-gateway-claim0
+      name: api-gateway-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      creationTimestamp: null
+      name: microservice-network
+    spec:
+      ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                  io.kompose.network/microservice-network: "true"
+      podSelector:
+        matchLabels:
+          io.kompose.network/microservice-network: "true"
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: authentication-service
+      name: authentication-service
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: authentication-service
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: authentication-service
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: authentication-service
+              name: authentication-service
+              ports:
+                - containerPort: 9191
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: authentication-service-claim0
+          restartPolicy: Always
+          volumes:
+            - name: authentication-service-claim0
+              persistentVolumeClaim:
+                claimName: authentication-service-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: authentication-service-claim0
+      name: authentication-service-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: axonserver
+      name: axonserver
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: axonserver
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: axonserver
+        spec:
+          containers:
+            - image: axoniq/axonserver
+              name: axonserver
+              ports:
+                - containerPort: 8024
+              resources: {}
+          hostname: axonserver
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cart-service
+      name: cart-service
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: cart-service
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: cart-service
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: cart-service
+              name: cart-service
+              ports:
+                - containerPort: 9194
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: cart-service-claim0
+          restartPolicy: Always
+          volumes:
+            - name: cart-service-claim0
+              persistentVolumeClaim:
+                claimName: cart-service-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cart-service-claim0
+      name: cart-service-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: grafan
+      name: grafan
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: grafan
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: grafan
+        spec:
+          containers:
+            - image: grafana/grafana
+              name: grafan
+              ports:
+                - containerPort: 3000
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: order-service
+      name: order-service
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: order-service
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: order-service
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: order-service
+              name: order-service
+              ports:
+                - containerPort: 9192
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: order-service-claim0
+          restartPolicy: Always
+          volumes:
+            - name: order-service-claim0
+              persistentVolumeClaim:
+                claimName: order-service-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: order-service-claim0
+      name: order-service-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: payment-service
+      name: payment-service
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: payment-service
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: payment-service
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: payment-service
+              name: payment-service
+              ports:
+                - containerPort: 9193
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: payment-service-claim0
+          restartPolicy: Always
+          volumes:
+            - name: payment-service-claim0
+              persistentVolumeClaim:
+                claimName: payment-service-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: payment-service-claim0
+      name: payment-service-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: prometheus
+      name: prometheus
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: prometheus
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: prometheus
+        spec:
+          containers:
+            - args:
+                - --config.file=/etc/prometheus/prometheus.yml
+                - --storage.tsdb.path=/prometheus
+                - --storage.tsdb.retention=31d
+                - --web.console.libraries=/usr/share/prometheus/console_libraries
+                - --web.console.templates=/usr/share/prometheus/consoles
+              image: prom/prometheus
+              name: prometheus
+              ports:
+                - containerPort: 9090
+              resources: {}
+              volumeMounts:
+                - mountPath: /etc/prometheus
+                  name: prometheus-claim0
+                - mountPath: /data
+                  name: prometheus-claim1
+          restartPolicy: Always
+          volumes:
+            - name: prometheus-claim0
+              persistentVolumeClaim:
+                claimName: prometheus-claim0
+            - name: prometheus-claim1
+              persistentVolumeClaim:
+                claimName: prometheus-claim1
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: prometheus-claim0
+      name: prometheus-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: prometheus-claim1
+      name: prometheus-claim1
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: service-registry
+      name: service-registry
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: service-registry
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: service-registry
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: service-registry
+              name: service-registry
+              ports:
+                - containerPort: 8761
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: service-registry-claim0
+          restartPolicy: Always
+          volumes:
+            - name: service-registry-claim0
+              persistentVolumeClaim:
+                claimName: service-registry-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: service-registry-claim0
+      name: service-registry-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: user-service
+      name: user-service
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: user-service
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: user-service
+        spec:
+          containers:
+            - env:
+                - name: JAVA_OPTS
+                  value: ' -DEUREKA_SERVER=http://service-registry:8761/eureka -DZIPKIN_SERVER=http://zipkin:9411/'
+              image: user-service
+              name: user-service
+              ports:
+                - containerPort: 9196
+              resources: {}
+              volumeMounts:
+                - mountPath: /home
+                  name: user-service-claim0
+          restartPolicy: Always
+          volumes:
+            - name: user-service-claim0
+              persistentVolumeClaim:
+                claimName: user-service-claim0
+    status: {}
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: user-service-claim0
+      name: user-service-claim0
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: zipkin
+      name: zipkin
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: zipkin
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (HEAD)
+          creationTimestamp: null
+          labels:
+            io.kompose.network/microservice-network: "true"
+            io.kompose.service: zipkin
+        spec:
+          containers:
+            - env:
+                - name: STORAGE_TYPE
+                  value: mem
+              image: openzipkin/zipkin
+              name: zipkin
+              ports:
+                - containerPort: 9411
+              resources: {}
+          restartPolicy: Always
+    status: {}
+kind: List
+metadata: {}
+

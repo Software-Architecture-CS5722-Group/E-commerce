@@ -2,83 +2,83 @@
 
 title __USER-SERVICE's Class Diagram__\n
 
-  namespace com.softwarearchitecture.user.service {
-    class com.softwarearchitecture.user.service.ServletInitializer {
+  namespace com.groupjn.serviceservice {
+    class com.groupjn.serviceservice.ServletInitializer {
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
-    class com.softwarearchitecture.user.service.UserServiceApplication {
+  namespace com.groupjn.serviceservice {
+    class com.groupjn.serviceservice.UserServiceApplication {
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace controller {
-      class com.softwarearchitecture.user.service.controller.UserController {
+      class UserController {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace entity {
-      class com.softwarearchitecture.user.service.entity.Permission {
+      class Permission {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace entity {
-      class com.softwarearchitecture.user.service.entity.Role {
+      class Role {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace entity {
-      class com.softwarearchitecture.user.service.entity.User {
+      class User {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace factory {
-      class com.softwarearchitecture.user.service.factory.AdminUser {
+      class AdminUser {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace factory {
-      class com.softwarearchitecture.user.service.factory.ClientUser {
+      class ClientUser {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace factory {
-      class com.softwarearchitecture.user.service.factory.CreateUserFactory {
+      class CreateUserFactory {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace factory {
-      interface com.softwarearchitecture.user.service.factory.ICreateUserFactory {
+      interface ICreateUserFactory {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace factory {
       enum UserType {
       }
@@ -86,71 +86,71 @@ title __USER-SERVICE's Class Diagram__\n
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace repository {
-      interface com.softwarearchitecture.user.service.repository.RoleRepository {
+      interface RoleRepository {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace repository {
-      interface com.softwarearchitecture.user.service.repository.UserRepository {
+      interface UserRepository {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace service {
-      interface com.softwarearchitecture.user.service.service.IRoleService {
+      interface IRoleService {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace service {
-      interface com.softwarearchitecture.user.service.service.IUser {
+      interface IUser {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace service {
-      class com.softwarearchitecture.user.service.service.RoleServiceImpl {
+      class RoleServiceImpl {
       }
     }
   }
   
 
-  namespace com.softwarearchitecture.user.service {
+  namespace com.groupjn.serviceservice {
     namespace service {
-      class com.softwarearchitecture.user.service.service.UserServiceImpl {
+      class UserServiceImpl {
       }
     }
   }
   
 
-  com.softwarearchitecture.user.service.ServletInitializer -up-|> org.springframework.boot.web.servlet.support.SpringBootServletInitializer
-  com.softwarearchitecture.user.service.controller.UserController o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
-  com.softwarearchitecture.user.service.controller.UserController o-- com.softwarearchitecture.user.service.service.RoleServiceImpl : roleService
-  com.softwarearchitecture.user.service.entity.Permission .up.|> java.io.Serializable
-  com.softwarearchitecture.user.service.entity.Role .up.|> java.io.Serializable
-  com.softwarearchitecture.user.service.entity.User o-- com.softwarearchitecture.user.service.factory.UserType : userType
-  com.softwarearchitecture.user.service.factory.AdminUser .up.|> com.softwarearchitecture.user.service.factory.ICreateUserFactory
-  com.softwarearchitecture.user.service.factory.ClientUser .up.|> com.softwarearchitecture.user.service.factory.ICreateUserFactory
-  com.softwarearchitecture.user.service.factory.ClientUser o-- com.softwarearchitecture.user.service.repository.RoleRepository : roleRepository
-  com.softwarearchitecture.user.service.factory.ClientUser o-- com.softwarearchitecture.user.service.repository.UserRepository : userRepository
-  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
-  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.service.RoleServiceImpl : roleService
-  com.softwarearchitecture.user.service.factory.CreateUserFactory o-- com.softwarearchitecture.user.service.entity.User : user
-  com.softwarearchitecture.user.service.service.RoleServiceImpl .up.|> com.softwarearchitecture.user.service.service.IRoleService
-  com.softwarearchitecture.user.service.service.RoleServiceImpl o-- com.softwarearchitecture.user.service.repository.RoleRepository : repository
-  com.softwarearchitecture.user.service.service.UserServiceImpl .up.|> com.softwarearchitecture.user.service.service.IUser
-  com.softwarearchitecture.user.service.service.UserServiceImpl o-- com.softwarearchitecture.user.service.repository.UserRepository : repository
+  com.groupjn.serviceservice.ServletInitializer -up-|> org.springframework.boot.web.servlet.support.SpringBootServletInitializer
+  UserController o-- UserRepository : repository
+  UserController o-- RoleServiceImpl : roleService
+  Permission .up.|> java.io.Serializable
+  Role .up.|> java.io.Serializable
+  User o-- UserType : userType
+  AdminUser .up.|> ICreateUserFactory
+  ClientUser .up.|> ICreateUserFactory
+  ClientUser o-- RoleRepository : roleRepository
+  ClientUser o-- UserRepository : userRepository
+  CreateUserFactory o-- UserRepository : repository
+  CreateUserFactory o-- RoleServiceImpl : roleService
+  CreateUserFactory o-- User : user
+  RoleServiceImpl .up.|> IRoleService
+  RoleServiceImpl o-- RoleRepository : repository
+  UserServiceImpl .up.|> IUser
+  UserServiceImpl o-- UserRepository : repository
 
 
 right footer

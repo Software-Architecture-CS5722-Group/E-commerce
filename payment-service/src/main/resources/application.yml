@@ -1,16 +1,29 @@
 server:
-  port: 9191
+  port: ${port:9193}
 spring:
   h2:
     console:
       enabled: true
   application:
     name: PAYMENT-SERVICE
+  zipkin:
+    enabled: true
+    base-url: ${ZIPKIN_SERVER:http://localhost:9411/}
+  sleuth:
+    enable: true
 
-security:
-  oauth2:
-    resource:
-      token-info-uri: http://localhost:8989/oauth/check_token
-    client:
-      client-id: mobile
-      client-secret: pin
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}

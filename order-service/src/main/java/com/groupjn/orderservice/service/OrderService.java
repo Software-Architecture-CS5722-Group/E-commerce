@@ -48,15 +48,16 @@ public class OrderService {
         log.info(payment.toString());
 
         //rest call
-        Payment paymentResponse = restTemplate.postForObject("http://API-GATEWAY-SERVICE/payment/doPayment",payment,Payment.class);
+        Payment paymentResponse = restTemplate.postForObject("http://payment-service:9190/payment/doPayment",payment,Payment.class);
         log.info("PaymentService response from OrderService Rest call: {}",new ObjectMapper().writeValueAsString(paymentResponse));
         response = paymentResponse.getPaymentStatus().equals("success") ? "payment processing successful and order placed" : "There was a failure in payment api order added to cart";
 
         return new TransactionResponse(
                 order,
-                paymentResponse.getAmount(),
+                payment.getAmount(),
                 paymentResponse.getTransactionId(),
-                response
+                response//paymentResponse.getTransactionId(),
+
                 );
         }
 }

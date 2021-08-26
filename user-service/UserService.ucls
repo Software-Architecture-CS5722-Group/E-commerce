@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.softwarearchitecture.user.service.ServletInitializer" project="user-service" 
+  <class id="1" language="java" name="com.groupjn.serviceservice.ServletInitializer" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/ServletInitializer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="505" y="2"/>    
@@ -11,7 +11,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="com.softwarearchitecture.user.service.UserServiceApplication" 
+  <class id="2" language="java" name="com.groupjn.serviceservice.UserServiceApplication"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/UserServiceApplication.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -22,7 +22,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.softwarearchitecture.user.service.controller.UserController" 
+  <class id="3" language="java" name="UserController"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/controller/UserController.java" 
     binary="false" corner="BOTTOM_RIGHT">    
@@ -33,7 +33,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.softwarearchitecture.user.service.entity.Permission" project="user-service" 
+  <class id="4" language="java" name="Permission" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/entity/Permission.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="116" width="205" x="757" y="-4"/>    
@@ -43,7 +43,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.softwarearchitecture.user.service.entity.Role" project="user-service" 
+  <class id="5" language="java" name="Role" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/entity/Role.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="903" y="266"/>    
@@ -53,7 +53,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.softwarearchitecture.user.service.entity.User" project="user-service" 
+  <class id="6" language="java" name="User" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/entity/User.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="890" y="488"/>    
@@ -63,7 +63,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.softwarearchitecture.user.service.factory.AdminUser" project="user-service" 
+  <class id="7" language="java" name="AdminUser" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/factory/AdminUser.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="562" y="625"/>    
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.softwarearchitecture.user.service.factory.ClientUser" project="user-service" 
+  <class id="8" language="java" name="ClientUser" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/factory/ClientUser.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="181" y="624"/>    
@@ -83,7 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.softwarearchitecture.user.service.factory.CreateUserFactory" 
+  <class id="9" language="java" name="CreateUserFactory"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/factory/CreateUserFactory.java" 
     binary="false" corner="BOTTOM_RIGHT">    
@@ -94,7 +94,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="10" language="java" name="com.softwarearchitecture.user.service.factory.ICreateUserFactory" 
+  <interface id="10" language="java" name="ICreateUserFactory"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/factory/ICreateUserFactory.java" 
     binary="false" corner="BOTTOM_RIGHT">    
@@ -105,7 +105,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <enumeration id="11" language="java" name="com.softwarearchitecture.user.service.factory.UserType" 
+  <enumeration id="11" language="java" name="UserType"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/factory/UserType.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -116,7 +116,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <interface id="12" language="java" name="com.softwarearchitecture.user.service.repository.RoleRepository" 
+  <interface id="12" language="java" name="RoleRepository"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/repository/RoleRepository.java" 
     binary="false" corner="BOTTOM_RIGHT">    
@@ -127,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="13" language="java" name="com.softwarearchitecture.user.service.repository.UserRepository" 
+  <interface id="13" language="java" name="UserRepository"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/repository/UserRepository.java" 
     binary="false" corner="BOTTOM_RIGHT">    
@@ -138,7 +138,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="14" language="java" name="com.softwarearchitecture.user.service.service.IRoleService" 
+  <interface id="14" language="java" name="IRoleService"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/service/IRoleService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -149,7 +149,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="15" language="java" name="com.softwarearchitecture.user.service.service.IUser" project="user-service" 
+  <interface id="15" language="java" name="IUser" project="user-service"
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/service/IUser.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1362" y="144"/>    
@@ -159,7 +159,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="16" language="java" name="com.softwarearchitecture.user.service.service.RoleServiceImpl" 
+  <class id="16" language="java" name="RoleServiceImpl"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/service/RoleServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -170,7 +170,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.softwarearchitecture.user.service.service.UserServiceImpl" 
+  <class id="17" language="java" name="UserServiceImpl"
     project="user-service" 
     file="/user-service/src/main/java/com/softwarearchitecture/user/service/service/UserServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
